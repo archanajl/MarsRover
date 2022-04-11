@@ -2,13 +2,11 @@ package com.techreturners.marsRover;
 
 public class PlateauController {
 
-    public boolean createPlateau(int x, int y){
+    //private Plateau plateau ;
 
-        if (x != y ) {
-            return false;
-        }
+    public Plateau createPlateau(int x, int y){
         Plateau plateau = new Plateau( x, y);
-        return true;
-
+        return plateau;
     }
+
 }

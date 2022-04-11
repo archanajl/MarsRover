@@ -7,6 +7,5 @@ public class Plateau {
     public Plateau (int width, int height){
         this.width = width;
         this.height = height;
-        System.out.println("Plateau created Successfully");
     }
 }

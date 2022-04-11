@@ -8,6 +8,7 @@ import java.lang.*;
 
 public class GameController {
 
+    private Plateau plateau ;
 
     public GameController() throws Exception{
 
@@ -15,8 +16,9 @@ public class GameController {
 
     public boolean createPlateau(int x, int y){
         PlateauController pleateauControl = new PlateauController();
-        return pleateauControl.createPlateau(x, y);
+        plateau = pleateauControl.createPlateau(x, y);
+        if (plateau != null) return true;
+        else return false;
     }
-
 
 }
