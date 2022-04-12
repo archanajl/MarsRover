@@ -15,4 +15,5 @@ public class Rover {
     public Position getPosition(){
         return this.position;
     }
+
 }

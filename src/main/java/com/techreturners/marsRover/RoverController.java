@@ -24,8 +24,8 @@ public class RoverController {
                 dir = Direction.N;
                 break;
         }
-        Position newPosition = new Position(0,0,dir);
-        Rover rover = new Rover(newPosition);
+        Position position = new Position(x,y,dir);
+        Rover rover = new Rover(position);
         return rover;
     }
 }

@@ -25,13 +25,15 @@ public class GameController {
     public boolean createRover(int x, int y, String d){
         RoverController roverControl = new RoverController();
         rover = roverControl.createRover(x, y,d);
-        connectPlateauRover();
+        PlateauController plateauControl = new PlateauController();
+        if (!plateauControl.checkRoverCollision(plateau,rover)){
+            plateauControl.connectPlateauRover(plateau,rover);
+        }
+        else {
+            rover = null;
+        }
         if (rover != null) return true;
         else return false;
     }
 
-    public void connectPlateauRover(){
-        PlateauController pleateauControl = new PlateauController();
-        pleateauControl.connectPlateauRover(plateau,rover);
-    }
 }

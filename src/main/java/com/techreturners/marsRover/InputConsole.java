@@ -65,7 +65,7 @@ public class InputConsole {
                 {
                 errorMessage = "Please enter valid values of the x , y and direction.";
             }else {
-                 rover = gController.createRover(Integer.parseInt(roverInitialArr[0]), Integer.parseInt(roverInitialArr[1]),roverInitialArr[1] );
+                 rover = gController.createRover(Integer.parseInt(roverInitialArr[0]), Integer.parseInt(roverInitialArr[1]),roverInitialArr[2] );
                 if (rover) {
                     printStream.println("Rover Created");
                     break;

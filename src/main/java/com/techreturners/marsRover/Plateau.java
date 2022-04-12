@@ -5,7 +5,7 @@ import java.util.HashMap;
 public class Plateau {
     private final int width;
     private final int height;
-    private HashMap<Position,Rover> rovers;
+    private HashMap<Rover,Position> rovers;
 
     public Plateau (int width, int height){
         this.width = width;
@@ -14,6 +14,10 @@ public class Plateau {
     }
 
     public void connectPlateauRover ( Rover r){
-       this.rovers.put(r.getPosition(), r);
+       this.rovers.put(r,r.getPosition());
+    }
+
+    public HashMap<Rover,Position> getRovers(){
+        return this.rovers;
     }
 }
