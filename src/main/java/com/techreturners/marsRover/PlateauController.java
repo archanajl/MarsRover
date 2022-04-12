@@ -9,4 +9,7 @@ public class PlateauController {
         return plateau;
     }
 
+    public void connectPlateauRover(Plateau plateau, Rover rover){
+        plateau.connectPlateauRover(rover);
+    }
 }

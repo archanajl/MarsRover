@@ -56,4 +56,36 @@ public class InputConsoleTest {
         String[] outputLines  = byteArrayOutputStream.toString().split("\n");
         Assertions.assertEquals("Please enter valid both the values of the x and y.(greater than " + MIN_PLATEAU_SIZE + " and below " + MAX_PLATEAU_SIZE + " )", outputLines[1]);
     }
+
+    @Test
+    public void checkcreatePlateauRover() throws Exception {
+        System.setIn(new ByteArrayInputStream("4 4\n1 2 N\n".getBytes()));
+        InputConsole.main(new String[0]);
+        String[] outputLines  = byteArrayOutputStream.toString().split("\n");
+        Assertions.assertEquals("Rover Created", outputLines[3]);
+    }
+
+    @Test
+    public void checkcreatePlateauRoverWithDirectionWrong() throws Exception {
+        System.setIn(new ByteArrayInputStream("4 4\n1 2 P".getBytes()));
+        InputConsole.main(new String[0]);
+        String[] outputLines  = byteArrayOutputStream.toString().split("\n");
+        Assertions.assertEquals("Please enter valid values of the x , y and direction.", outputLines[3]);
+    }
+
+    @Test
+    public void checkcreatePlateauRoverWithOnlyXYForRover() throws Exception {
+        System.setIn(new ByteArrayInputStream("4 4\n1 2".getBytes()));
+        InputConsole.main(new String[0]);
+        String[] outputLines  = byteArrayOutputStream.toString().split("\n");
+        Assertions.assertEquals("Please enter the values of the x , y and direction.", outputLines[3]);
+    }
+
+    @Test
+    public void checkcreatePlateauRoverWithYaboveRange1() throws Exception {
+        System.setIn(new ByteArrayInputStream("2 2\n3 3 N".getBytes()));
+        InputConsole.main(new String[0]);
+        String[] outputLines  = byteArrayOutputStream.toString().split("\n");
+        Assertions.assertEquals("Please enter valid values of the x , y and direction.", outputLines[3]);
+    }
 }
