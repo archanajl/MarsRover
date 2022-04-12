@@ -81,10 +81,26 @@ public class InputConsoleTest {
     }
 
     @Test
-    public void checkcreatePlateauRoverWithYaboveRange1() throws Exception {
+    public void checkcreatePlateauRoverWithXYaboveRange() throws Exception {
         System.setIn(new ByteArrayInputStream("2 2\n3 3 N".getBytes()));
         InputConsole.main(new String[0]);
         String[] outputLines  = byteArrayOutputStream.toString().split("\n");
         Assertions.assertEquals("Please enter valid values of the x , y and direction.", outputLines[3]);
+    }
+
+    @Test
+    public void checkmoveRoverWithWrongCommand() throws Exception {
+        System.setIn(new ByteArrayInputStream("4 4\n1 2 N\nLMLMS".getBytes()));
+        InputConsole.main(new String[0]);
+        String[] outputLines  = byteArrayOutputStream.toString().split("\n");
+        Assertions.assertEquals("Please enter only valid commands. Only L,R,M allowed.", outputLines[5]);
+    }
+
+    @Test
+    public void checkmoveRoverWithValidCommand() throws Exception {
+        System.setIn(new ByteArrayInputStream("4 4\n1 2 N\nLMLM".getBytes()));
+        InputConsole.main(new String[0]);
+        String[] outputLines  = byteArrayOutputStream.toString().split("\n");
+        Assertions.assertEquals("Rover moved successfully", outputLines[5]);
     }
 }

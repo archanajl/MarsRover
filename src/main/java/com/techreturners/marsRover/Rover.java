@@ -4,6 +4,9 @@ public class Rover {
 
     private Position position;
 
+    public Rover (){
+
+    }
     public Rover (Position position){
         this.position = position;
     }

@@ -22,7 +22,7 @@ public class GameController {
         else return false;
     }
 
-    public boolean createRover(int x, int y, String d){
+    public Rover createRover(int x, int y, String d){
         RoverController roverControl = new RoverController();
         rover = roverControl.createRover(x, y,d);
         PlateauController plateauControl = new PlateauController();
@@ -32,8 +32,14 @@ public class GameController {
         else {
             rover = null;
         }
-        if (rover != null) return true;
-        else return false;
+        return rover;
+    }
+
+    public Position moveRover(Rover rover, String command ){
+        Position newPosition;
+        RoverController roverControl = new RoverController();
+        newPosition = roverControl.moveRover(rover,command);
+        return newPosition;
     }
 
 }

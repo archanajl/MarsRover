@@ -13,7 +13,7 @@ public class InputConsole {
         Scanner scanner = new Scanner(System.in);
         PrintStream printStream = new PrintStream(System.out) ;
         GameController gController = new GameController();
-        //PlateauController pcontroller = new PlateauController();
+
         printStream.println("Enter the size of the plateau(x,y) you wanted to created: (Example: 4 4)");
         boolean validEntry = false;
         String errorMessage = "";
@@ -50,8 +50,8 @@ public class InputConsole {
         String[] Directions = {"N","S","W","E"};
         List <String> DirectionsList = Arrays.asList(Directions);
         RoverController rcontroller = new RoverController();
+        Rover rover = new Rover();
         while(scanner.hasNextLine()){
-            boolean rover;
             String line = scanner.nextLine().trim();
             String[] roverInitialArr = line.split(" ");
             if (line.isBlank())
@@ -66,11 +66,33 @@ public class InputConsole {
                 errorMessage = "Please enter valid values of the x , y and direction.";
             }else {
                  rover = gController.createRover(Integer.parseInt(roverInitialArr[0]), Integer.parseInt(roverInitialArr[1]),roverInitialArr[2] );
-                if (rover) {
+                if (rover.getPosition() != null) {
                     printStream.println("Rover Created");
                     break;
                 }else{
                     errorMessage = "Rover not created. Please try again or quit by Ctrl C";
+                }
+            }
+            if (!validEntry)
+                printStream.println(errorMessage);
+        }
+        printStream.println("Enter the command for moving the  Rover");
+        while(scanner.hasNextLine()){
+            boolean isValidRoverMove;
+            Position newPosition, currentPosition;
+            String line = scanner.nextLine().trim();
+            currentPosition = rover.getPosition();
+            if (line.isBlank())
+                validEntry = false;
+            else if (!line.matches("[LRM]*")){
+                errorMessage = "Please enter only valid commands. Only L,R,M allowed.";
+            }else {
+                newPosition = gController.moveRover(rover, line);
+                if (!currentPosition.equals(newPosition)) {
+                    printStream.println("Rover moved successfully");
+                    break;
+                }else{
+                    errorMessage = "Rover can not be moved to this position, Try another position";
                 }
             }
             if (!validEntry)
