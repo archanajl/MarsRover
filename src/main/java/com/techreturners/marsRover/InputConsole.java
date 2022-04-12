@@ -49,7 +49,6 @@ public class InputConsole {
         printStream.println("Enter the initial position of Rover");
         String[] Directions = {"N","S","W","E"};
         List <String> DirectionsList = Arrays.asList(Directions);
-        RoverController rcontroller = new RoverController();
         Rover rover = new Rover();
         while(scanner.hasNextLine()){
             String line = scanner.nextLine().trim();
@@ -61,7 +60,7 @@ public class InputConsole {
                 errorMessage = "Please enter the values of the x , y and direction.";
             } else if (Integer.parseInt(roverInitialArr[0]) > plateauX || Integer.parseInt(roverInitialArr[0]) < MIN_PLATEAU_SIZE
                     || Integer.parseInt(roverInitialArr[1]) > plateauY || Integer.parseInt(roverInitialArr[1]) < MIN_PLATEAU_SIZE
-                    || !DirectionsList.contains(roverInitialArr[2].trim()))
+                    || !Direction.contains(roverInitialArr[2].trim()))
                 {
                 errorMessage = "Please enter valid values of the x , y and direction.";
             }else {
@@ -87,9 +86,11 @@ public class InputConsole {
             else if (!line.matches("[LRM]*")){
                 errorMessage = "Please enter only valid commands. Only L,R,M allowed.";
             }else {
-                newPosition = gController.moveRover(rover, line);
-                if (!currentPosition.equals(newPosition)) {
+                isValidRoverMove = gController.moveRover(rover, line);
+                if (isValidRoverMove) {
                     printStream.println("Rover moved successfully");
+                    printStream.println("Rover position is : " + rover.getPosition().getX()
+                            + " " + rover.getPosition().getY() + " " + rover.getPosition().getDirection() );
                     break;
                 }else{
                     errorMessage = "Rover can not be moved to this position, Try another position";

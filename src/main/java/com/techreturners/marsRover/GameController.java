@@ -26,7 +26,7 @@ public class GameController {
         RoverController roverControl = new RoverController();
         rover = roverControl.createRover(x, y,d);
         PlateauController plateauControl = new PlateauController();
-        if (!plateauControl.checkRoverCollision(plateau,rover)){
+        if (!plateauControl.checkRoverCollision(plateau,rover,rover.getPosition())){
             plateauControl.connectPlateauRover(plateau,rover);
         }
         else {
@@ -35,11 +35,18 @@ public class GameController {
         return rover;
     }
 
-    public Position moveRover(Rover rover, String command ){
-        Position newPosition;
+    public boolean moveRover( Rover rover, String command ){
+        Position newPosition, currentPosition;
         RoverController roverControl = new RoverController();
-        newPosition = roverControl.moveRover(rover,command);
-        return newPosition;
+        currentPosition = rover.getPosition();
+        newPosition = roverControl.moveRover(plateau,rover,command);
+        PlateauController plateauControl = new PlateauController();
+        if (plateauControl.checkRoverCollision(plateau,rover,newPosition)) {
+            rover.setPosition(currentPosition);
+            return false;
+        }
+        rover.setPosition(newPosition);
+        return true;
     }
 
 }

@@ -13,7 +13,15 @@ public class Plateau {
         this.rovers = new HashMap<>();
     }
 
-    public void connectPlateauRover ( Rover r){
+    public int getHeight() {
+        return height;
+    }
+
+    public int getWidth() {
+        return width;
+    }
+
+    public void connectPlateauRover (Rover r){
        this.rovers.put(r,r.getPosition());
     }
 

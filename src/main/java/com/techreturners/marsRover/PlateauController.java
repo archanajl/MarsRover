@@ -14,13 +14,13 @@ public class PlateauController {
         plateau.connectPlateauRover(rover);
     }
 
-    public boolean checkRoverCollision(Plateau plateau, Rover rover){
+    public boolean checkRoverCollision(Plateau plateau, Rover rover, Position position){
         HashMap<Rover,Position> plateauRovers;
         plateauRovers = plateau.getRovers();
         boolean isCollision = false;
         for (Map.Entry<Rover,Position> set :
                 plateauRovers.entrySet()) {
-            if (set.getKey().equals(rover)){
+            if (set.getValue().equals(position)){
                 isCollision = true;
                 System.out.println("Bang");
                 break;

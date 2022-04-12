@@ -24,4 +24,6 @@ public class Position {
         return direction;
     }
 
+
+
 }

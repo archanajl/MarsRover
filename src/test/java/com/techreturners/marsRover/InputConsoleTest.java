@@ -97,10 +97,34 @@ public class InputConsoleTest {
     }
 
     @Test
-    public void checkmoveRoverWithValidCommand() throws Exception {
+    public void checkmoveRoverWithValidCommandCharacters() throws Exception {
         System.setIn(new ByteArrayInputStream("4 4\n1 2 N\nLMLM".getBytes()));
         InputConsole.main(new String[0]);
         String[] outputLines  = byteArrayOutputStream.toString().split("\n");
         Assertions.assertEquals("Rover moved successfully", outputLines[5]);
+    }
+
+    @Test
+    public void checkmoveRoverWithValidCommandWithOneSet() throws Exception {
+        System.setIn(new ByteArrayInputStream("4 4\n1 2 N\nLM".getBytes()));
+        InputConsole.main(new String[0]);
+        String[] outputLines  = byteArrayOutputStream.toString().split("\n");
+        Assertions.assertEquals("Rover position is : 1 1 W", outputLines[6]);
+    }
+
+    @Test
+    public void checkmoveRoverWithValidCommandWithMoreLM() throws Exception {
+        System.setIn(new ByteArrayInputStream("5 5\n1 2 N\nLMLMLMLMM".getBytes()));
+        InputConsole.main(new String[0]);
+        String[] outputLines  = byteArrayOutputStream.toString().split("\n");
+        Assertions.assertEquals("Rover position is : 1 3 N", outputLines[6]);
+    }
+
+    @Test
+    public void checkmoveRoverWithValidCommandWithMoreRM() throws Exception {
+        System.setIn(new ByteArrayInputStream("5 5\n3 3 E\nMMRMMRMRRM".getBytes()));
+        InputConsole.main(new String[0]);
+        String[] outputLines  = byteArrayOutputStream.toString().split("\n");
+        Assertions.assertEquals("Rover position is : 5 1 E", outputLines[6]);
     }
 }
