@@ -46,6 +46,10 @@ public class GameController {
             return false;
         }
         rover.setPosition(newPosition);
+        HashMap<Rover,Position> rovers = plateau.getRovers();
+        rovers.remove(rover);
+        rovers.put(rover,newPosition);
+        plateau.setRovers(rovers);
         return true;
     }
 

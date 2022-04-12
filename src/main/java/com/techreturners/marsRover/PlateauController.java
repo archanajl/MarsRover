@@ -20,7 +20,7 @@ public class PlateauController {
         boolean isCollision = false;
         for (Map.Entry<Rover,Position> set :
                 plateauRovers.entrySet()) {
-            if (set.getValue().equals(position)){
+            if ((set.getValue().getX() == position.getX()) && (set.getValue().getY() == position.getY())){
                 isCollision = true;
                 System.out.println("Bang");
                 break;

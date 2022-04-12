@@ -58,73 +58,89 @@ public class InputConsoleTest {
 
     @Test
     public void checkcreatePlateauRover() throws Exception {
-        System.setIn(new ByteArrayInputStream("4 4\n1 2 N\n".getBytes()));
+        System.setIn(new ByteArrayInputStream("4 4\n1\n1 2 N\n".getBytes()));
         InputConsole.main(new String[0]);
         String[] outputLines  = byteArrayOutputStream.toString().split("\n");
-        Assertions.assertEquals("Rover Created", outputLines[3]);
+        Assertions.assertEquals("Rover Created", outputLines[5]);
     }
 
     @Test
     public void checkcreatePlateauRoverWithDirectionWrong() throws Exception {
-        System.setIn(new ByteArrayInputStream("4 4\n1 2 P".getBytes()));
+        System.setIn(new ByteArrayInputStream("4 4\n1\n1 2 P".getBytes()));
         InputConsole.main(new String[0]);
         String[] outputLines  = byteArrayOutputStream.toString().split("\n");
-        Assertions.assertEquals("Please enter valid values of the x , y and direction.", outputLines[3]);
+        Assertions.assertEquals("Please enter valid values of the x , y and direction.", outputLines[5]);
     }
 
     @Test
     public void checkcreatePlateauRoverWithOnlyXYForRover() throws Exception {
-        System.setIn(new ByteArrayInputStream("4 4\n1 2".getBytes()));
+        System.setIn(new ByteArrayInputStream("4 4\n1\n1 2".getBytes()));
         InputConsole.main(new String[0]);
         String[] outputLines  = byteArrayOutputStream.toString().split("\n");
-        Assertions.assertEquals("Please enter the values of the x , y and direction.", outputLines[3]);
+        Assertions.assertEquals("Please enter the values of the x , y and direction.", outputLines[5]);
     }
 
     @Test
     public void checkcreatePlateauRoverWithXYaboveRange() throws Exception {
-        System.setIn(new ByteArrayInputStream("2 2\n3 3 N".getBytes()));
+        System.setIn(new ByteArrayInputStream("2 2\n1\n3 3 N".getBytes()));
         InputConsole.main(new String[0]);
         String[] outputLines  = byteArrayOutputStream.toString().split("\n");
-        Assertions.assertEquals("Please enter valid values of the x , y and direction.", outputLines[3]);
+        Assertions.assertEquals("Please enter valid values of the x , y and direction.", outputLines[5]);
     }
 
     @Test
     public void checkmoveRoverWithWrongCommand() throws Exception {
-        System.setIn(new ByteArrayInputStream("4 4\n1 2 N\nLMLMS".getBytes()));
+        System.setIn(new ByteArrayInputStream("4 4\n1\n1 2 N\nLMLMS".getBytes()));
         InputConsole.main(new String[0]);
         String[] outputLines  = byteArrayOutputStream.toString().split("\n");
-        Assertions.assertEquals("Please enter only valid commands. Only L,R,M allowed.", outputLines[5]);
+        Assertions.assertEquals("Please enter only valid commands. Only L,R,M allowed.", outputLines[7]);
     }
 
     @Test
     public void checkmoveRoverWithValidCommandCharacters() throws Exception {
-        System.setIn(new ByteArrayInputStream("4 4\n1 2 N\nLMLM".getBytes()));
+        System.setIn(new ByteArrayInputStream("4 4\n1\n1 2 N\nLMLM".getBytes()));
         InputConsole.main(new String[0]);
         String[] outputLines  = byteArrayOutputStream.toString().split("\n");
-        Assertions.assertEquals("Rover moved successfully", outputLines[5]);
+        Assertions.assertEquals("Rover moved successfully", outputLines[7]);
     }
 
     @Test
     public void checkmoveRoverWithValidCommandWithOneSet() throws Exception {
-        System.setIn(new ByteArrayInputStream("4 4\n1 2 N\nLM".getBytes()));
+        System.setIn(new ByteArrayInputStream("4 4\n1\n1 2 N\nLM".getBytes()));
         InputConsole.main(new String[0]);
         String[] outputLines  = byteArrayOutputStream.toString().split("\n");
-        Assertions.assertEquals("Rover position is : 1 1 W", outputLines[6]);
+        Assertions.assertEquals("Rover position is : 0 2 W", outputLines[8]);
     }
 
     @Test
     public void checkmoveRoverWithValidCommandWithMoreLM() throws Exception {
-        System.setIn(new ByteArrayInputStream("5 5\n1 2 N\nLMLMLMLMM".getBytes()));
+        System.setIn(new ByteArrayInputStream("5 5\n1\n1 2 N\nLMLMLMLMM".getBytes()));
         InputConsole.main(new String[0]);
         String[] outputLines  = byteArrayOutputStream.toString().split("\n");
-        Assertions.assertEquals("Rover position is : 1 3 N", outputLines[6]);
+        Assertions.assertEquals("Rover position is : 1 3 N", outputLines[8]);
     }
 
     @Test
     public void checkmoveRoverWithValidCommandWithMoreRM() throws Exception {
-        System.setIn(new ByteArrayInputStream("5 5\n3 3 E\nMMRMMRMRRM".getBytes()));
+        System.setIn(new ByteArrayInputStream("5 5\n1\n3 3 E\nMMRMMRMRRM".getBytes()));
         InputConsole.main(new String[0]);
         String[] outputLines  = byteArrayOutputStream.toString().split("\n");
-        Assertions.assertEquals("Rover position is : 5 1 E", outputLines[6]);
+        Assertions.assertEquals("Rover position is : 5 1 E", outputLines[8]);
+    }
+
+    @Test
+    public void checkenterTwoValidRovers() throws Exception {
+        System.setIn(new ByteArrayInputStream("5 5\n2\n1 2 N\nLMLMLMLMM\n3 3 E\nMMRMMRMRRM".getBytes()));
+        InputConsole.main(new String[0]);
+        String[] outputLines  = byteArrayOutputStream.toString().split("\n");
+        Assertions.assertEquals("Rovers positioned successfully!", outputLines[14]);
+    }
+
+    @Test
+    public void checkenterTwoRoversAtCollision() throws Exception {
+        System.setIn(new ByteArrayInputStream("5 5\n2\n1 2 N\nM\n1 1 N\nMM".getBytes()));
+        InputConsole.main(new String[0]);
+        String[] outputLines  = byteArrayOutputStream.toString().split("\n");
+        Assertions.assertEquals("Rovers positioned successfully!", outputLines[14]);
     }
 }

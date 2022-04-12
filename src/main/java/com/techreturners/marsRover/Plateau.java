@@ -21,6 +21,10 @@ public class Plateau {
         return width;
     }
 
+    public void setRovers(HashMap<Rover, Position> rovers) {
+        this.rovers = rovers;
+    }
+
     public void connectPlateauRover (Rover r){
        this.rovers.put(r,r.getPosition());
     }
