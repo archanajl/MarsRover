@@ -25,7 +25,7 @@ public class Plateau {
         this.rovers = rovers;
     }
 
-    public void connectPlateauRover (Rover r){
+    public void setRovers (Rover r){
        this.rovers.put(r,r.getPosition());
     }
 

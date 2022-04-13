@@ -1,0 +1,29 @@
+                                                                                                                                                                 ,--------------------------.
+                         ,-------------------------.                                                                         ,-------------------------------.   |Direction                 |
+                         |InputConsole             |   ,-----------------------------------------------------------------.   |Plateau                        |   |--------------------------|
+                         |-------------------------|   |RoverController                                                  |   |-------------------------------|   |N,                        |
+                         |-int MIN_PLATEAU_SIZE    |   |-----------------------------------------------------------------|   |-int width                     |   |S,                        |
+                         |-int MAX_PLATEAU_SIZE    |   |+Position moveRover(Plateau plateau,Rover rover, String command )|   |-int height                    |   |W,                        |
+                         |+void main(String[] args)|   |+Rover createRover(int x, int y, String d)                       |   |-HashMap<Rover,Position> rovers|   |E ;                       |
+                         `-------------------------'   `-----------------------------------------------------------------'   |+void setRovers(Rover r)       |   |boolean contains(String s)|
+                                                                                                                             `-------------------------------'   `--------------------------'
+                                                                                                                                             |                                               
+                                                                                                                                             |                                               
+                                        ,----------------------------------------------.                                                     |                                               
+                                        |GameController                                |                                  ,-------------------------------------.                            
+                                        |----------------------------------------------|                                  |Rover                                |                            
+                                        |-Plateau plateau                              |                                  |-------------------------------------|                            
+                                        |-Rover rover                                  |                                  |-Position position                   |                            
+                                        |+boolean createPlateau(int x, int y)          |                                  |+void setPosition (Position position)|                            
+                                        |+boolean createRover(int x, int y, String dir)|                                  |+Position getPosition()              |                            
+                                        |+boolean moveRover(Rover R, String command)   |                                  `-------------------------------------'                            
+                                        `----------------------------------------------'                                                                                                     
+                                                                |                                                                                                                            
+,------------------------------------------------------------------------------------------------------------------------------.                                                             
+|PlateauController                                                                                                             |                                                             
+|------------------------------------------------------------------------------------------------------------------------------|                                                             
+|+void createPlateauRover(int x, int y)                                                                                        |                                                             
+|+connectPlateauRover(Plateau plateau, Rover rover)                                                                            |                                                             
+|+boolean checkRoverCollision(Plateau plateau, Rover rover, Position newPosition, Position currentPosition, boolean isCreation)|                                                             
+|+afterCheckCollison(Plateau plateau, Rover rover, Position position, boolean isCollision)                                     |                                                             
+`------------------------------------------------------------------------------------------------------------------------------'                                                             

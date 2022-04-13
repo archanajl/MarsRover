@@ -11,7 +11,7 @@ public class PlateauController {
     }
 
     public void connectPlateauRover(Plateau plateau, Rover rover){
-        plateau.connectPlateauRover(rover);
+        plateau.setRovers(rover);
     }
 
     public boolean checkRoverCollision(Plateau plateau, Rover rover, Position newPosition, Position currentPosition, boolean isCreation){
