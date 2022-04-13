@@ -14,20 +14,20 @@ public class PlateauController {
         plateau.connectPlateauRover(rover);
     }
 
-    public boolean checkRoverCollision(Plateau plateau, Rover rover, Position position){
+    public boolean checkRoverCollision(Plateau plateau, Rover rover, Position newPosition, Position currentPosition, boolean isCreation){
         HashMap<Rover,Position> plateauRovers;
         plateauRovers = plateau.getRovers();
         boolean isCollision = false;
         for (Map.Entry<Rover,Position> set :
                 plateauRovers.entrySet()) {
-            if ((set.getValue().getX() == position.getX()) && (set.getValue().getY() == position.getY())){
+            if ((set.getValue().getX() == newPosition.getX()) && (set.getValue().getY() == newPosition.getY())){
                 isCollision = true;
                 System.out.println("Bang");
-                afterCheckCollison(plateau,rover,position,true);
+                if (!isCreation) afterCheckCollison(plateau,rover,currentPosition,true);
                 break;
             }
         }
-        afterCheckCollison(plateau,rover,position,false);
+        if (!isCreation) afterCheckCollison(plateau,rover,newPosition,false);
         return isCollision;
     }
 
