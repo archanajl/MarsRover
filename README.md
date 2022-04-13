@@ -4,7 +4,7 @@
 
 As part of a team that explores Mars by sending remotely controlled vehicles to the surface of the planet. 
 Develop an API that translates the commands sent from earth to instructions that are understood by the rover.
-Refer to the pdf (https://github.com/archanajl/MarsRover/tree/master/docs/MarsRoverMission.pdf) document for more information 
+Refer to the [pdf](https://github.com/archanajl/MarsRover/tree/master/docs/MarsRoverMission.pdf) document for more information 
 Click [here](https://kata-log.rocks/mars-rover-kata) to have more ideas/ suggestions.
 
 ### <ins>Rules of the game</ins>
