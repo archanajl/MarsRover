@@ -95,7 +95,8 @@ public class InputConsole {
                                 + " " + rover.getPosition().getY() + " " + rover.getPosition().getDirection());
                         break;
                     } else {
-                        errorMessage = "Rover can not be moved to this position, Try another command.";
+                        printStream.println("Rover can not be at this position as it encountered an obstacle.");
+                        break;
                     }
                 }
                 if (!validEntry)

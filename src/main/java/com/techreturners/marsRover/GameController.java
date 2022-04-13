@@ -42,14 +42,14 @@ public class GameController {
         newPosition = roverControl.moveRover(plateau,rover,command);
         PlateauController plateauControl = new PlateauController();
         if (plateauControl.checkRoverCollision(plateau,rover,newPosition)) {
-            rover.setPosition(currentPosition);
+            //rover.setPosition(currentPosition);
             return false;
         }
-        rover.setPosition(newPosition);
+        /*rover.setPosition(newPosition);
         HashMap<Rover,Position> rovers = plateau.getRovers();
         rovers.remove(rover);
         rovers.put(rover,newPosition);
-        plateau.setRovers(rovers);
+        plateau.setRovers(rovers);*/
         return true;
     }
 

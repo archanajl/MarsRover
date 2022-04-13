@@ -141,6 +141,6 @@ public class InputConsoleTest {
         System.setIn(new ByteArrayInputStream("5 5\n2\n1 2 N\nM\n1 1 N\nMM".getBytes()));
         InputConsole.main(new String[0]);
         String[] outputLines  = byteArrayOutputStream.toString().split("\n");
-        Assertions.assertEquals("Rovers positioned successfully!", outputLines[14]);
+        Assertions.assertEquals("Rover can not be at this position as it encountered an obstacle.", outputLines[13]);
     }
 }

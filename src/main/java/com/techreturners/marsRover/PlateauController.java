@@ -23,9 +23,26 @@ public class PlateauController {
             if ((set.getValue().getX() == position.getX()) && (set.getValue().getY() == position.getY())){
                 isCollision = true;
                 System.out.println("Bang");
+                afterCheckCollison(plateau,rover,position,true);
                 break;
             }
         }
+        afterCheckCollison(plateau,rover,position,false);
         return isCollision;
+    }
+
+    public void afterCheckCollison(Plateau plateau, Rover rover, Position position, boolean isCollision){
+        // remove the rover or move the rover to new position
+        RoverController roverControl = new RoverController();
+        if (isCollision){
+            rover.setPosition(position);
+        }else{
+            rover.setPosition(position);
+            HashMap<Rover,Position> rovers = plateau.getRovers();
+            rovers.remove(rover);
+            rovers.put(rover,position);
+            plateau.setRovers(rovers);
+        }
+
     }
 }
