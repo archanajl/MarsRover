@@ -14,7 +14,7 @@ public class InputConsole {
         PrintStream printStream = new PrintStream(System.out) ;
         GameController gController = new GameController();
 
-        printStream.println("Enter the size of the plateau(x,y) you wanted to created: (Example: 4 4)");
+        printStream.println("Enter the top right most co-ordinates of the plateau(x,y) you wanted to created: (Example: 4 4). Plateau is from (0,0) to (x,y) ");
         boolean validEntry = false;
         String errorMessage = "";
         Boolean plateau;
@@ -105,6 +105,7 @@ public class InputConsole {
             numberofRovers --;
         }
         printStream.println("Rovers positioned successfully!");
+        printStream.println(gController.displayGrid());
     }
 
 

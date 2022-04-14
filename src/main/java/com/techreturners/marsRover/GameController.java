@@ -49,4 +49,15 @@ public class GameController {
         return true;
     }
 
+    public StringBuilder displayGrid(){
+        GridDisplay gd = new GridDisplay();
+        StringBuilder gridDisplay
+                = new StringBuilder();
+        if (plateau != null) {
+            gridDisplay = gd.displayGrid(plateau.getWidth(), plateau.getHeight(), plateau.getRovers());
+
+        }
+        return gridDisplay;
+    }
+
 }
