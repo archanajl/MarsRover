@@ -75,7 +75,7 @@ Assumptions:
 
 ### <ins> Testcases </ins>
 
-Please click [here](https://htmlpreview.github.io/?https://github.com/archanajl/MarsRover/blob/master/Test%20Results%20-%20InputConsoleTest.html) to see the test results.
+Please click [here](https://htmlpreview.github.io/?https://github.com/archanajl/MarsRover/blob/master/docs/Test%20Results%20-%20InputConsoleTest.html) to see the test results.
 ### <ins>Technologies Used</ins>
 
     Java
