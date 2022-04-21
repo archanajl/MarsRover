@@ -1,4 +1,4 @@
-package com.techreturners.marsRover;
+package com.archanajl.marsRover;
 
 import java.util.HashMap;
 import java.util.Map;

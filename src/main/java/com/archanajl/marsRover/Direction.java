@@ -1,4 +1,4 @@
-package com.techreturners.marsRover;
+package com.archanajl.marsRover;
 
 public enum Direction {
     N,

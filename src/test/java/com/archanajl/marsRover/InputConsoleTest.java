@@ -1,4 +1,4 @@
-package com.techreturners.marsRover;
+package com.archanajl.marsRover;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;

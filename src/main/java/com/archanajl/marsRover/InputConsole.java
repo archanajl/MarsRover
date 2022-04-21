@@ -1,4 +1,4 @@
-package com.techreturners.marsRover;
+package com.archanajl.marsRover;
 
 import java.io.PrintStream;
 import java.util.*;
