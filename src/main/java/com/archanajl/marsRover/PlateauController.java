@@ -23,17 +23,21 @@ public class PlateauController {
             if ((set.getValue().getX() == newPosition.getX()) && (set.getValue().getY() == newPosition.getY())){
                 isCollision = true;
                 System.out.println("Bang");
+                // if there is a collision remove the rover from the new position and
+                // get it back to the starting position
+                // so that the rover stays at the same place
                 if (!isCreation) afterCheckCollison(plateau,rover,currentPosition,true);
                 break;
             }
         }
+        // in case of a new rover if there is no collision create a new rover in the set of rovers
+        // with position as new position
         if (!isCreation) afterCheckCollison(plateau,rover,newPosition,false);
         return isCollision;
     }
 
     public void afterCheckCollison(Plateau plateau, Rover rover, Position position, boolean isCollision){
         // remove the rover or move the rover to new position
-        RoverController roverControl = new RoverController();
         if (isCollision){
             rover.setPosition(position);
         }else{
